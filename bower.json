@@ -1,0 +1,30 @@
+{
+  "name": "info-swipeview",
+  "version": "0.0.0",
+  "authors": [
+    "elegantuniv <korea651@gmail.com>"
+  ],
+  "description": "for providing solution to swipe view for expressing information",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "swipe"
+  ],
+  "main": "info-swipeview.html",
+  "license": "MIT",
+  "homepage": "https://github.com/elegant651/info-swipeview/",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.4",
+    "core-image": "Polymer/core-image#^0.5.5",
+    "core-animated-pages": "Polymer/core-animated-pages#^0.5.5",
+    "page-indicator": "elegant651/info-swipeview^0.0.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "*"
+  }
+}

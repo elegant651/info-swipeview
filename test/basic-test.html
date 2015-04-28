@@ -1,0 +1,54 @@
+<!--
+    @license
+    Copyright (c) 2014 The Elegant Universe Authors. All rights reserved.
+    
+-->
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>info-swipeview</title>
+
+  <script src="../../webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../info-swipeview.html">
+</head>
+<body>
+
+  <!-- You use the document as a place to set up your fixtures. -->
+  <info-swipeview intros="{{intros}}"></info-swipeview>
+
+  <script>
+    var myEl = document.querySelector('info-swipeview');
+    myEl.intros = [
+      {
+        img: "test.png",
+        title: "Title1",
+        content: "This is content area."
+      },
+      {
+        img: "test.png",
+        title: "Title2",
+        content: "This is content area."
+      },
+      {
+        img: "test.png",
+        title: "Title3",
+        content: "This is content area."
+      }
+    ];
+
+    suite('<info-swipeview>', function() {
+
+      test('defines the "intros" property', function() {
+        assert.equal(myEl.intros.length, 3);
+      });
+      
+    });
+  </script>
+
+</body>
+</html>

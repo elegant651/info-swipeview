@@ -1,0 +1,93 @@
+<!--
+    @license
+    Copyright (c) 2014 The Elegant Universe Authors. All rights reserved.    
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-image/core-image.html">
+<link rel="import" href="../core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../core-animated-pages/transitions/slide-from-right.html">
+<link rel="import" href="../page-indicator/page-indicator.html">
+
+<!--
+Element providing solution to swipe view for expressing information.
+
+##### Example
+
+    <info-swipeview></info-swipeview>
+
+@element info-swipeview
+@blurb Element providing solution to swipe view for expressing information.
+@status alpha
+@homepage http://elegant651.github.io/info-swipeview
+-->
+<polymer-element name="info-swipeview" attributes="intros" vertical layout>
+  <template>
+    <core-animated-pages id="cp" selected="0" transitions="slide-from-right">
+      <template repeat="{{intro in intros}}">
+        <section>
+          <div center-justified vertical layout>
+            <core-image src="../images/{{intro.img}}" style="width: 740px; height:310px;" sizing="cover"></core-image>
+            <div class="panel">
+              <div class="title">{{intro.title}}</div>        
+              <div class="content">{{intro.content}}</div>        
+            </div>
+          </div>  
+      </section>  
+    </template>
+  </core-animated-pages>
+
+  <div>
+    <page-indicator numSize="{{numSize}}" curIdx="{{curIdx}}"></page-indicator>   
+    <button id="btn_next" on-click="{{onNext}}">Next</button>
+  </div>
+</template>
+
+  <script>
+    Polymer('info-swipeview', {
+
+      /**
+       * The 'curIdx' attribute sets an current index out of view list.
+       *
+       * @attribute curIdx
+       * @type integer
+       * default 0
+       */
+      curIdx: 0,
+      /**
+       * The 'numSize' attribute sets an total size of view list.
+       *
+       * @attribute numSize
+       * @type integer
+       * default 1
+       */
+      numSize: 1,
+      /**
+       * The 'intros' attribute sets an initial data collection.
+       *
+       * @attribute intros
+       * @type array
+       * default []
+       */
+      intros: [],
+
+      domReady: function() {
+        this.numSize = this.intros.length;
+      },
+
+      onNext: function() {    
+        var childrenSize = this.$.cp.children.length;     
+        if(this.$.cp.selected+1 == this.numSize) {
+          this.fire('finish-next');
+          return;
+        }
+
+        this.$.cp.selected = (this.$.cp.selected + 1) % childrenSize;     
+        this.curIdx = this.$.cp.selected;
+
+        if(this.$.cp.selected+1 == this.numSize){       
+          this.$.btn_next.innerHTML = "Let's play";
+        }     
+      }
+    });
+  </script>
+</polymer-element>
