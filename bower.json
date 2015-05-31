@@ -1,0 +1,7 @@
+{
+  "name": "info-swipeview#gh-pages",
+  "private": true,
+  "dependencies": {
+    "info-swipeview": "elegant651/info-swipeview#master"
+  }
+}
